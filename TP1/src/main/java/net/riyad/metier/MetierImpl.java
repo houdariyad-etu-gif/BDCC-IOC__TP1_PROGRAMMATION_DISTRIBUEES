@@ -6,17 +6,10 @@ public class MetierImpl implements IMetier {
     //couplage faible
     private IDao dao;
 
-    @Override
-    public double calcul() {
-        double t = dao.getData();
-        double res = ((t * 12 *Math.PI) / 2) *Math.cos(t);
-        return res;
-    }
-
-    /*
+    /* BONNE PRATIQUE : INJECTION VIA CONSTRUCTEUR
      *Pour injecter dans l'attribut dao
      *un objet d'une classe qui implemente l interface IDO
-     *au moment de l'instantiation
+     *au moment de l'instantiation (au moment de creation de l'objet)
      */
     public MetierImpl(IDao dao) {
         this.dao = dao;
@@ -26,12 +19,27 @@ public class MetierImpl implements IMetier {
     public MetierImpl() {
     }
 
-    /* MAUVAISE PRATIQUE:
-    *Pour injecter dans l'attribut dao
-    *un objet d'une classe qui implemente l interface IDO
-    * apres instanciation
-    */
+    @Override
+    public double calcul() {
+        double t = dao.getData();
+        double res = t * 12 *Math.PI/2 *Math.cos(t);
+        return res;
+    }
+
+    /* MAUVAISE PRATIQUE: INJECTION VIA SETTER
+     *Pour injecter dans l'attribut dao
+     *un objet d'une classe qui implemente l interface IDO
+     * apres instanciation (apres creation de l'objet)
+     */
     public void setDao(IDao dao){
         this.dao = dao ;
     }
+
+
+
+
+
+
+
+
 }
