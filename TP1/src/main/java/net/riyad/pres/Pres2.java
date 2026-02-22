@@ -2,14 +2,13 @@ package net.riyad.pres;
 
 import net.riyad.dao.IDao;
 import net.riyad.metier.IMetier;
-
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.Scanner;
 
 public class Pres2 {
     //FileNotFoundException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException
-    static void main(String[] args) throws Exception{
+    static void main(String[] args) throws Exception {
 
         //lire le fichier 'config.txt'
         Scanner scanner = new Scanner(new File("config.txt"));
@@ -48,16 +47,11 @@ public class Pres2 {
          *   - Génère ClassNotFoundException si elle n’existe pas
          */
 
-        //test:
-        //System.out.println(dao.getData());
-
+        //System.out.println(dao.getData()); <-//test:
         String metierClassName = scanner.nextLine();
         Class cMetier = Class.forName(metierClassName);
-
-
         //Preferable : Injection via constructeur avec parametres
-        IMetier metier =(IMetier) cMetier.getConstructor(IDao.class).newInstance(d);
-
+        IMetier metier = (IMetier) cMetier.getConstructor(IDao.class).newInstance(d);
         //constructeur sans parametres
         //IMetier metier =(IMetier) cMetier.getConstructor().newInstance();
         //Method <- methode a utiliser pour invoker via setter

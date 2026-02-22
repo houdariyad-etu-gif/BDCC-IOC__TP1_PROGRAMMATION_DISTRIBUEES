@@ -2,6 +2,8 @@ package net.riyad.ext;
 
 import net.riyad.dao.IDao;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 
 //@Component("d2") <--- @Component : is general .for the dao class we do @Repository
 @Repository("d2")
