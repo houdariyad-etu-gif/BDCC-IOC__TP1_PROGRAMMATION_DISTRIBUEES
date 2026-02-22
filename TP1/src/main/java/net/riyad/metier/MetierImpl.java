@@ -1,8 +1,20 @@
 package net.riyad.metier;
 
 import net.riyad.dao.IDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+//version Annotation (des composants)
+
+//si on ne specifie pas d'objet [dans notre cas: objet="metier"]<- il nous creera un objet avec meme nom de la classe [specifiant package et la classe<== identifiant]et aka ="MetierImpl"
+@Component("metier")
 
 public class MetierImpl implements IMetier {
+
+    //injection automatique -> on utilise Autowired avant la propriete 'dao' et puis spring injecte automatiquement un objet de type 'IDao'
+    @Autowired
+    //@Qualifier("d2")
     //couplage faible
     private IDao dao;
 
