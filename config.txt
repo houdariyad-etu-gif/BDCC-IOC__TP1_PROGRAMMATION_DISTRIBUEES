@@ -1,2 +1,2 @@
-net.riyad.ext.DaoImplV2
+//net.riyad.ext.DaoImplV2
 net.riyad.metier.MetierImpl
